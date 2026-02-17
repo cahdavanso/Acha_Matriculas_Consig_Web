@@ -16,36 +16,38 @@
             </div>
         </header>
 
-        <main class="main-content">
-            <div class="upload-section">
-                <div class="upload-box" id="uploadFront">
-                    <i class="ri-file-upload-line"></i>
-                    <p>Front Trabalhado</p>
-                    <span>DRAG AND DROP</span>
-                    <input type="file" hidden>
+        <form id="uploadForm">
+            <main class="main-content">
+                <div class="upload-section">
+                    <div class="upload-box" id="uploadFront">
+                        <i class="ri-file-upload-line"></i>
+                        <p>Front Trabalhado</p>
+                        <span>DRAG AND DROP</span>
+                        <input type="file" name="front_file" hidden>
+                    </div>
+                    <div class="upload-box" id="uploadAverbados">
+                        <i class="ri-file-upload-line"></i>
+                        <p>Averbados Trabalhado</p>
+                        <span>DRAG AND DROP</span>
+                        <input type="file" name="averbados_file" hidden>
+                    </div>
                 </div>
-                <div class="upload-box" id="uploadAverbados">
-                    <i class="ri-file-upload-line"></i>
-                    <p>Averbados Trabalhado</p>
-                    <span>DRAG AND DROP</span>
-                    <input type="file" hidden>
-                </div>
-            </div>
 
-            <div class="return-path-section">
-                <label for="returnPath" class="input-label">Arquivo de Retorno</label>
-                <div class="input-group">
-                    <input type="text" id="returnPath" placeholder="Selecione o diretório de retorno..." readonly>
-                    <button class="icon-button" id="selectFolder">
-                        <i class="ri-folder-open-line"></i>
-                    </button>
+                <div class="return-path-section">
+                    <label for="returnPath" class="input-label">Arquivo de Retorno</label>
+                    <div class="input-group">
+                        <input type="text" id="returnPath" name="output_path" placeholder="Cole o caminho da pasta aqui...">
+                        <button type="button" class="icon-button" id="selectFolder">
+                            <i class="ri-folder-open-line"></i>
+                        </button>
+                    </div>
                 </div>
-            </div>
 
-            <button class="process-button" id="processData">
-                Processar Dados
-            </button>
-        </main>
+                <button type="submit" class="process-button" id="processData">
+                    Processar Dados
+                </button>
+            </main>
+        </form>
     </div>
 
     <script src="script.js"></script>

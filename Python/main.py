@@ -9,7 +9,11 @@ from itertools import combinations
 from flask import Flask, render_template, request, jsonify
 import os
 
-app = Flask(__name__)
+# Ajustando para o Flask encontrar suas pastas de HTML e CSS
+app = Flask(__name__, 
+            template_folder='../Codigos', 
+            static_folder='../Codigos',
+            static_url_path='')
 
 @app.route('/')
 def index():
@@ -46,6 +50,7 @@ def processar():
         return jsonify({"erro": str(e)}), 500
 
 if __name__ == '__main__':
+    # debug=True ajuda a ver erros detalhados no terminal
     app.run(debug=True, port=5000) # Rodará em uma porta diferente do Live Server
 
 class ACHA_MATRICULA_CONSIGFACIL:

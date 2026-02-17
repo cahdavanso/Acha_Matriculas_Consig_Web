@@ -119,16 +119,29 @@ const form = document.getElementById('uploadForm');
 form.onsubmit = async (e) => {
     e.preventDefault();
     
+    // Captura os arquivos dos inputs
+    const frontInput = document.querySelector('#uploadFront input');
+    const averbadosInput = document.querySelector('#uploadAverbados input');
+    const outputPath = document.getElementById('returnPath').value;
+
+    if (!frontInput.files[0] || !averbadosInput.files[0] || !outputPath) {
+        alert("Preencha todos os campos!");
+        return;
+    }
+
     const formData = new FormData();
-    formData.append('front_file', document.querySelector('#uploadFront input').files[0]);
-    formData.append('averbados_file', document.querySelector('#uploadAverbados input').files[0]);
-    formData.append('output_path', document.getElementById('returnPath').value);
+    formData.append('front_file', frontInput.files[0]);
+    formData.append('averbados_file', averbadosInput.files[0]);
+    formData.append('output_path', outputPath);
 
-    const response = await fetch('/processar', {
-        method: 'POST',
-        body: formData
-    });
-
-    const result = await response.json();
-    alert(result.mensagem || result.erro);
+    try {
+        const response = await fetch('/processar', {
+            method: 'POST',
+            body: formData
+        });
+        const result = await response.json();
+        alert(result.mensagem || result.erro);
+    } catch (error) {
+        alert("Erro ao conectar com o servidor Python. Certifique-se de que o app.py está rodando!");
+    }
 };
