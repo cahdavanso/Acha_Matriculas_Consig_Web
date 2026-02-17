@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Matrículas Corretas</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="ri-play-fill"></i>
+                <h1>MATRÍCULAS CORRETAS</h1>
+            </div>
+        </header>
+
+        <main class="main-content">
+            <div class="upload-section">
+                <div class="upload-box" id="uploadFront">
+                    <i class="ri-file-upload-line"></i>
+                    <p>Front Trabalhado</p>
+                    <span>DRAG AND DROP</span>
+                    <input type="file" hidden>
+                </div>
+                <div class="upload-box" id="uploadAverbados">
+                    <i class="ri-file-upload-line"></i>
+                    <p>Averbados Trabalhado</p>
+                    <span>DRAG AND DROP</span>
+                    <input type="file" hidden>
+                </div>
+            </div>
+
+            <div class="return-path-section">
+                <label for="returnPath" class="input-label">Arquivo de Retorno</label>
+                <div class="input-group">
+                    <input type="text" id="returnPath" placeholder="Selecione o diretório de retorno..." readonly>
+                    <button class="icon-button" id="selectFolder">
+                        <i class="ri-folder-open-line"></i>
+                    </button>
+                </div>
+            </div>
+
+            <button class="process-button" id="processData">
+                Processar Dados
+            </button>
+        </main>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

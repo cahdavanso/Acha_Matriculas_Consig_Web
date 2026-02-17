@@ -1,0 +1,268 @@
+/* styles.css */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap'); /* Fonte mais tech */
+
+:root {
+    --bg-color: #1a1a2e; /* Fundo escuro */
+    --card-bg-color: rgba(45, 45, 70, 0.4); /* Fundo dos cards com transparência */
+    --border-color: #00bcd4; /* Azul ciano para bordas e destaques */
+    --text-color: #e0e0e0; /* Texto claro */
+    --heading-color: #fff; /* Títulos brancos */
+    --button-bg-start: #00bcd4; /* Início do gradiente do botão */
+    --button-bg-end: #6dd5ed; /* Fim do gradiente do botão */
+    --input-bg-color: rgba(255, 255, 255, 0.1); /* Fundo do input */
+    --input-border-color: rgba(0, 188, 212, 0.5); /* Borda do input */
+    --glass-blur: 15px; /* Intensidade do blur para o efeito de vidro */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Roboto Mono', monospace; /* Aplica a fonte tech */
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+    background-image: radial-gradient(circle at top left, var(--bg-color) 0%, #16162a 50%, #0d0d1a 100%);
+    overflow: hidden; /* Para evitar scroll por elementos fora da tela */
+}
+
+/* Efeito de fundo com partículas/grid minimalista */
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(0deg, transparent 24%, rgba(0, 188, 212, 0.05) 25%, rgba(0, 188, 212, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 188, 212, 0.05) 75%, rgba(0, 188, 212, 0.05) 76%, transparent 77%, transparent),
+        linear-gradient(90deg, transparent 24%, rgba(0, 188, 212, 0.05) 25%, rgba(0, 188, 212, 0.05) 26%, transparent 27%, transparent 74%, rgba(0, 188, 212, 0.05) 75%, rgba(0, 188, 212, 0.05) 76%, transparent 77%, transparent);
+    background-size: 50px 50px; /* Tamanho das células do grid */
+    opacity: 0.3;
+    z-index: -1;
+}
+
+
+.container {
+    background: var(--card-bg-color);
+    border-radius: 20px;
+    padding: 40px;
+    width: 100%;
+    max-width: 900px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    color: var(--heading-color);
+}
+
+.logo i {
+    font-size: 2.5em;
+    color: var(--border-color);
+    margin-right: 10px;
+    text-shadow: 0 0 10px var(--border-color); /* Efeito neon sutil */
+}
+
+.logo h1 {
+    font-size: 1.8em;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.main-content {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+
+.upload-section {
+    display: flex;
+    justify-content: space-around;
+    gap: 30px;
+    flex-wrap: wrap; /* Para responsividade */
+}
+
+.upload-box {
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px dashed var(--input-border-color);
+    border-radius: 15px;
+    padding: 30px;
+    flex: 1;
+    min-width: 280px; /* Largura mínima para os boxes */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden; /* Para o efeito de borda brilhante */
+}
+
+.upload-box::before {
+    content: '';
+    position: absolute;
+    top: -5px;
+    left: -5px;
+    right: -5px;
+    bottom: -5px;
+    border: 2px solid transparent;
+    border-image: linear-gradient(45deg, var(--border-color) 0%, var(--button-bg-end) 100%);
+    border-image-slice: 1;
+    border-radius: 18px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.upload-box:hover::before {
+    opacity: 1;
+}
+
+.upload-box:hover {
+    background: rgba(255, 255, 255, 0.08);
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 188, 212, 0.3);
+}
+
+.upload-box i {
+    font-size: 3.5em;
+    color: var(--border-color);
+    margin-bottom: 15px;
+    text-shadow: 0 0 10px var(--border-color);
+    transition: color 0.3s ease;
+}
+
+.upload-box:hover i {
+    color: var(--button-bg-end);
+}
+
+.upload-box p {
+    font-size: 1.2em;
+    font-weight: 700;
+    margin-bottom: 5px;
+    color: var(--heading-color);
+}
+
+.upload-box span {
+    font-size: 0.8em;
+    color: var(--text-color);
+    opacity: 0.7;
+}
+
+.return-path-section {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.input-label {
+    font-size: 1em;
+    font-weight: 700;
+    color: var(--heading-color);
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    background: var(--input-bg-color);
+    border: 1px solid var(--input-border-color);
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 188, 212, 0.1);
+}
+
+.input-group input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    background: transparent;
+    border: none;
+    color: var(--text-color);
+    font-size: 1em;
+    outline: none;
+}
+
+.input-group input::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+.icon-button {
+    background: var(--input-border-color);
+    border: none;
+    padding: 12px 15px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+    color: var(--heading-color);
+    font-size: 1.2em;
+}
+
+.icon-button:hover {
+    background: var(--border-color);
+}
+
+.process-button {
+    background: linear-gradient(90deg, var(--button-bg-start) 0%, var(--button-bg-end) 100%);
+    border: none;
+    border-radius: 10px;
+    padding: 15px 25px;
+    color: var(--heading-color);
+    font-size: 1.2em;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    align-self: center; /* Centraliza o botão */
+    width: 100%;
+    max-width: 300px;
+    box-shadow: 0 5px 20px rgba(0, 188, 212, 0.4);
+}
+
+.process-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 188, 212, 0.6);
+    filter: brightness(1.1);
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .container {
+        padding: 25px;
+    }
+    .upload-section {
+        flex-direction: column;
+        align-items: center;
+    }
+    .upload-box {
+        width: 100%;
+        max-width: 350px;
+    }
+    .logo h1 {
+        font-size: 1.5em;
+    }
+    .process-button {
+        font-size: 1em;
+        padding: 12px 20px;
+    }
+}
